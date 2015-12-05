@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en"  class="no-js">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>6.0.0 Released · Babel</title>
+  <meta name="description" content="NOTE: Not all integrations have been updated yet. This is a very disruptive majorso please bear with us as we smooth out the edges.">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="/css/main.css?t=2015-12-05T04:09:24+00:00">
+  <link rel="canonical" href="https://babeljs.io/blog/2015/10/29/6.0.0">
+  <link rel="alternate" type="application/rss+xml" title="Babel" href="https://babeljs.io/feed.xml" />
+
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <link rel="icon" type="image/png" href="/favicon-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+
+  <meta name="og:url" content="https://babeljs.io/">
+  <meta name="og:image" content="website">
+  <meta name="og:title" content="6.0.0 Released · Babel">
+  <meta name="og:description" content="NOTE: Not all integrations have been updated yet. This is a very disruptive majorso please bear with us as we smooth out the edges.">
+  <meta name="og:image" content="https://babeljs.io/images/share-image.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@babeljs">
+  <meta name="twitter:title" content="6.0.0 Released · Babel">
+  <meta name="twitter:description" content="NOTE: Not all integrations have been updated yet. This is a very disruptive majorso please bear with us as we smooth out the edges.">
+  <meta name="twitter:image:src" content="https://babeljs.io/images/share-image.png">
+  <meta name="twitter:url" content="https://babeljs.io/blog/2015/10/29/6.0.0">
+</head>
+
+
+  <body>
+
+    <nav role="navigation" id="header" class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" data-toggle="collapse" data-target="#navigation" class="navbar-toggle collapsed">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/" class="navbar-brand logo">Babel</a>
+    </div>
+    <div id="navigation" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        
+          
+            <li >
+              <a href="/docs/learn-es2015/">Learn ES2015</a>
+            </li>
+          
+        
+          
+            <li >
+              <a href="/docs/setup/">Setup</a>
+            </li>
+          
+        
+          
+            <li >
+              <a href="/docs/plugins/">Plugins</a>
+            </li>
+          
+        
+          
+            <li class="dropdown ">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Usage <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                
+                  <li >
+                    <a href="/docs/usage/options/">Options</a>
+                  </li>
+                
+                  <li >
+                    <a href="/docs/usage/babelrc/">babelrc</a>
+                  </li>
+                
+                  <li >
+                    <a href="/docs/usage/cli/">CLI</a>
+                  </li>
+                
+                  <li >
+                    <a href="/docs/usage/require/">Require Hook</a>
+                  </li>
+                
+                  <li >
+                    <a href="/docs/usage/api/">API</a>
+                  </li>
+                
+                  <li >
+                    <a href="/docs/usage/polyfill/">Polyfill</a>
+                  </li>
+                
+                  <li >
+                    <a href="/docs/usage/browser/">Browser</a>
+                  </li>
+                
+              </ul>
+            </li>
+          
+        
+          
+            <li >
+              <a href="/repl/">Try it out</a>
+            </li>
+          
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="https://discuss.babeljs.io">Discuss</a>
+        </li>
+        <li>
+          <a href="https://slack.babeljs.io/">Chat</a>
+        </li>
+        <li>
+          <a href="https://phabricator.babeljs.io">Issues</a>
+        </li>
+        <li class="active">
+          <a href="/blog/">Blog</a>
+        </li>
+        <li>
+          <a href="https://twitter.com/babeljs">Twitter</a>
+        </li>
+        <li>
+          <a href="https://github.com/babel/babel">GitHub</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <div class="docs-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-push-3 text-center">
+        
+        <h1>6.0.0 Released</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-push-3 babel-blog-content">
+      <p class="small text-center text-muted">Posted Oct 29, 2015 by James Kyle</p>
+
+      
+
+      <blockquote>
+<p><strong>NOTE:</strong> Not all integrations have been updated yet. This is a very disruptive major
+so please bear with us as we smooth out the edges.</p>
+</blockquote>
+
+<p>It’s hard to believe it’s been a year since the Babel project started, but there was a birthday cake, so it must be real!</p>
+
+<blockquote class="twitter-tweet" lang="en"><p lang="en" dir="ltr">I work with some super awesome people. Thank you <a href="https://twitter.com/cpojer">@cpojer</a> and Ovidiu! <a href="http://t.co/l1NzyobiBz">pic.twitter.com/l1NzyobiBz</a></p>&mdash; Sebastian McKenzie (@sebmck) <a href="https://twitter.com/sebmck/status/648495457623252992">September 28, 2015</a></blockquote>
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>A whole lot has happened over the last year. We’ve travelled all over the world talking about Babel, and we’ve met some really awesome people along the way.</p>
+
+<p>Babel has spent the last year finding its place in the JavaScript community. In February we decided that Babel wasn’t just going to be a ES6 transpiler. Instead, it needed to become a platform. A suite of tools designed to create the next generation of JavaScript tooling.</p>
+
+<p>When we released Babel 5, it came with a new plugin API that allowed anyone to use the full power of Babel to create tools that plug directly into the transform process. In just a few short months this has blown up into an <a href="https://www.npmjs.com/search?q=babel-plugin">entire ecosystem of tools</a>.</p>
+
+<p>Developers have built everything from debugging tools, framework optimizations, and minifiers to experimental new syntaxes and systems to enforce complex rules on their codebases. These extensions have proven to be both creative and extremely useful.</p>
+
+<p>People have also built complex tooling on top of Babel internals, like <a href="http://documentation.js.org">documentationjs</a> which uses Babel’s Babylon parser to replace an existing tool with a much more intelligent version.</p>
+
+<p>But we think we can go even further. Babel should be able to power minifiers, linters, formatters, syntax highlighters, code completion tools, type checkers, codemod tools, and every other tool to be using the same foundation to do their job better than ever before.</p>
+
+<p>So today we’re releasing Babel 6.</p>
+
+<p>This is the most significant update we’ve ever made and enables the project to truly become a platform for the community to build upon.</p>
+
+<h3 id="modularization">Modularization</h3>
+
+<p>The biggest change you’ll notice is that Babel has been completely restructured to be as modular as possible, and all of the transformers have been rewritten as plugins using the same API that is exposed to everyone.</p>
+
+<p>All of the internals have been pulled out into separate packages as well, each defining a lightweight public API that can be used independently of everything else.</p>
+
+<p>If there’s something you want to build with some Babel internals, you can now just install the package and have full access to them. Inside the <a href="https://github.com/babel/babel/tree/development/packages">packages directory</a> you’ll find all existing packages and plugins.</p>
+
+<h3 id="opt-in-plugins">Opt-in Plugins</h3>
+
+<p>Since Babel is focusing on being a platform for JavaScript tooling and not an ES2015 transpiler, we’ve decided to make all of the plugins opt-in. This means when you install Babel it will no longer transpile your ES2015 code by default.</p>
+
+<p>In order to drastically simplify the public API of Babel, each transformer is now completely independent. This means the ‘blacklist’, ‘whitelist’, ‘optional’, ‘nonStandard’, and ‘modules’ options have all been removed, but that doesn’t mean you need to do more work to get Babel to transform your codebase.</p>
+
+<h3 id="plugin-presets">Plugin Presets</h3>
+
+<p>Since specifying and maintaining dozens of transformers in a config file would be a lot of work, Babel 6 is introducing the concept of Plugin Presets which group together similar plugins for easy consumption.</p>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="nv">$ </span>npm install --save-dev babel-preset-es2015
+</code></pre></div><div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">{</span>
+  <span class="err">“</span><span class="nx">presets</span><span class="err">”</span><span class="o">:</span> <span class="p">[</span><span class="err">“</span><span class="nx">es2015</span><span class="err">”</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The official presets included today are <code>babel-preset-es2015</code> and <code>babel-preset-react</code>, but we expect there will be many more in the future.</p>
+
+<p>We also added presets for stages such as <code>babel-preset-stage-0</code> (used to be <code>stage: 0</code> in <code>.babelrc</code> in babel 5.x).</p>
+
+<h3 id="performance-improvements">Performance Improvements</h3>
+
+<p>Performance continues to be one of the top priorities of Babel. Babel 5 changed the transformation and traversal pipeline dramatically to make way for some major performance improvements that have been implemented in Babel 6.</p>
+
+<p>The traversal process is one of biggest chunks of time spent in the Babel pipeline. With any AST-based tool you want to make sure that you traverse the tree as little as possible to keep it fast. Plugins were designed around this so that they could be lightning fast while working with everything else.</p>
+
+<p>Babel 6 implements a new optimization which merges all plugins together into a single traversal. It then manages the traversal process completely so plugins don’t ever have to worry about doing so manually. As a developer you can simply focus on writing your transform, and Babel will handle the rest.</p>
+
+<h3 id="plugin-api">Plugin API</h3>
+
+<p>We received a lot of feedback that the plugin API was confusing, so in Babel 6, it’s a bit simpler. Note that this is a breaking change, but it should reduce confusion quite a bit.</p>
+
+<p><strong>Babel 5</strong></p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kr">export</span> <span class="k">default</span> <span class="kd">function</span><span class="p">({</span> <span class="nx">Plugin</span><span class="p">,</span> <span class="nx">types</span><span class="o">:</span> <span class="nx">t</span> <span class="p">})</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">new</span> <span class="nx">Plugin</span><span class="p">(</span><span class="err">‘</span><span class="nx">ast</span><span class="o">-</span><span class="nx">transform</span><span class="err">’</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">visitor</span><span class="o">:</span> <span class="p">{</span> <span class="err">…</span> <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Babel 6</strong></p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kr">export</span> <span class="k">default</span> <span class="kd">function</span><span class="p">({</span> <span class="nx">types</span><span class="o">:</span> <span class="nx">t</span> <span class="p">})</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">visitor</span><span class="o">:</span> <span class="p">{</span> <span class="err">…</span> <span class="p">}</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p><strong>Plugin Authors</strong>: When updating your plugins, please remember to bump your major versions since this makes Babel 5 and 6 incompatible. Semver is important!</p>
+</blockquote>
+
+<h3 id="new-updated-proposals">New/Updated Proposals</h3>
+
+<p>There are a couple of updated TC39 proposals that have come out. Babel 6 updates to the latest revisions of decorators, class properties, and others.</p>
+
+<h3 id="in-closing">In Closing</h3>
+
+<p>This is a really exciting release for us.</p>
+
+<p>Anyone who&#39;s ever been involved with an open source project knows that it&#39;s a ton of work, but at the end of the day it&#39;s incredibly gratifying to be able to contribute even the tiniest bit back to the community.</p>
+
+<p>Sebastian has been up literally all night to finish all the last minute things needed to launch Babel 6 during his EmberCamp keynote. It&#39;s currently 1am for me in San Francisco and I&#39;m writing this blog post as quickly as possible, listening to EDM music to stay awake.</p>
+
+<p>I want to thank everyone who has ever helped out even the littlest bit with Babel. A huge shoutout to Logan Smyth (<a href="https://github.com/loganfsmyth">@loganfsmyth</a>), Henry Zhu (<a href="https://github.com/hzoo">@hzoo</a>), Jesse McCarthy (<a href="https://github.com/jmm">@jmm</a>), and Denis Pushkarev (<a href="https://github.com/zloirock">@zloirock</a>) for all their hard work managing issues and contributing to Babel.</p>
+
+<p>We’re excited to finally release Babel 6 to the world. As always, we’re committed to pushing Babel to be the best tool it can be, so please keep the GitHub issues and pull requests coming!</p>
+
+
+      <hr>
+
+      <div class="babel-share-buttons">
+        <div class="fb-share-button" data-layout="button_count"></div>
+        <a class="twitter-share-button" href="https://twitter.com/share" data-via="babeljs" data-text="6.0.0">Tweet</a>
+      </div>
+
+      <div id="fb-root"></div>
+
+      <hr>
+
+      <div id="disqus_thread"></div>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+    </div>
+  </div>
+</div>
+
+
+    <div class="footer text-center">
+  <p><a href="https://github.com/babel/babel">Babel</a> · v6.x
+ · Distributed under MIT License</p>
+  <p><a href="https://github.com/babel/babel.github.io/tree/862b43db93e48762671267034a50c30c00e433e2">Looking for Babel 5.x docs?</a> · Found an issue with the docs? Report it <a href="https://github.com/babel/babel.github.io/issues/new">here</a>.</a></p>
+</div>
+
+
+  <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js' type="text/javascript"></script>
+
+  <script src='//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js' type="text/javascript"></script>
+
+  <script src='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js' type="text/javascript"></script>
+
+
+<script>$("html").removeClass("no-js").addClass("js");</script>
+
+
+
+
+  
+    <script src='/scripts/social.js' type="text/javascript"></script>
+  
+
+
+
+
+
+
+  </body>
+
+</html>

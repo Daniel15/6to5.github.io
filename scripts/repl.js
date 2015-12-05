@@ -1,15 +1,20 @@
-(function(babel, $, _, ace, window) {
+  import ace from 'ace';
+  import {transform} from 'babel-core';
+  import $ from 'jquery';
+  import _ from 'lodash';
+
+  import {presets} from './repl-config';
 
   /* Throw meaningful errors for getters of commonjs. */
   ["module", "exports", "require"].forEach(function(commonVar){
-    Object.defineProperty(window, commonVar, { 
+    Object.defineProperty(window, commonVar, {
       configurable: true,
       get: function () {
         throw new Error(commonVar + " is not supported in the browser, you need a commonjs environment such as node.js/io.js, browserify/webpack etc");
       }
     });
   });
-  
+
   /*
    * Utils for working with the browser's URI (e.g. the query params)
    */
@@ -117,6 +122,51 @@
     };
   }
 
+  /**
+   * Options for selecting presets to use.
+   */
+  function getPresetOptions() {
+    // Create the checkboxes for all available presets
+    var $presetContainer = document.getElementById('babel-repl-presets');
+    var $presets = [];
+    Object.keys(presets).forEach(presetName => {
+      var $group = document.createElement('div');
+      $group.className = 'form-group';
+
+      var $label = document.createElement('label');
+      $label.htmlFor = 'option-' + presetName;
+      $group.appendChild($label);
+
+      var $input = document.createElement('input');
+      $input.name = 'preset';
+      $input.value = presetName;
+      $input.id = 'option-' + presetName;
+      $input.type = 'checkbox';
+      $label.appendChild($input);
+      $label.appendChild(document.createTextNode(' ' + presetName));
+
+      $presetContainer.appendChild($group);
+      $presets.push($input);
+    });
+
+    return {
+      get() {
+        return $presets
+          .filter($preset => $preset.checked)
+          .map($preset => $preset.value)
+          .join(',');
+      },
+      set(value) {
+        value = value.split(',');
+        $presets.forEach($preset => {
+          $preset.checked = value.indexOf($preset.value) > -1;
+        });
+      },
+      enumerable: true,
+      configurable: true,
+    };
+  }
+
   /*
    * Babel options for transpilation as used by the REPL
    */
@@ -128,18 +178,14 @@
 
     var options = {};
     Object.defineProperties(options, {
-      'experimental': $checkbox($experimental),
-      'evaluate': $checkbox($evaluate),
-      'loose': $checkbox($loose),
-      'spec': $checkbox($spec)
+      evaluate: $checkbox($evaluate),
+      presets: getPresetOptions(),
     });
 
     // Merge in defaults
     var defaults = {
-      experimental : false,
-      loose : false,
-      spec : false,
-      evaluate : true
+      evaluate: true,
+      presets: 'es2015,stage-2,react'
     };
 
     _.assign(options, defaults);
@@ -194,10 +240,8 @@
     this.clearOutput();
 
     try {
-      transformed = babel.transform(code, {
-        stage: this.options.experimental ? 0 : 2,
-        loose: this.options.loose && "all",
-        optional: this.options.spec && ["es6.spec.templateLiterals", "es6.spec.blockScoping", "es6.spec.symbols"],
+      transformed = transform(code, {
+        presets: this.options.presets.split(',').map(preset => presets[preset]),
         filename: 'repl'
       });
     } catch (err) {
@@ -239,8 +283,8 @@
       capturingConsole.log.apply(capturingConsole, arguments);
     };
 
-    capturingConsole.log = 
-    capturingConsole.info = 
+    capturingConsole.log =
+    capturingConsole.info =
     capturingConsole.debug = function() {
       if (this !== capturingConsole) { return; }
 
@@ -303,7 +347,3 @@
   repl.$toolBar.on('change', onSourceChange);
 
   repl.compile();
-
-
-
-}(babel, $, _, ace, window));

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en"  class="no-js">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Minify booleans transform · Babel</title>
+  <meta name="description" content="The compiler for writing next generation JavaScript">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="/css/main.css?t=2015-12-05T04:09:24+00:00">
+  <link rel="canonical" href="https://babeljs.io/docs/plugins/transform-minify-booleans/">
+  <link rel="alternate" type="application/rss+xml" title="Babel" href="https://babeljs.io/feed.xml" />
+
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <link rel="icon" type="image/png" href="/favicon-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+
+  <meta name="og:url" content="https://babeljs.io/">
+  <meta name="og:image" content="website">
+  <meta name="og:title" content="Minify booleans transform · Babel">
+  <meta name="og:description" content="The compiler for writing next generation JavaScript">
+  <meta name="og:image" content="https://babeljs.io/images/share-image.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@babeljs">
+  <meta name="twitter:title" content="Minify booleans transform · Babel">
+  <meta name="twitter:description" content="The compiler for writing next generation JavaScript">
+  <meta name="twitter:image:src" content="https://babeljs.io/images/share-image.png">
+  <meta name="twitter:url" content="https://babeljs.io/docs/plugins/transform-minify-booleans/">
+</head>
+
+
+  <body>
+
+    <nav role="navigation" id="header" class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" data-toggle="collapse" data-target="#navigation" class="navbar-toggle collapsed">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/" class="navbar-brand logo">Babel</a>
+    </div>
+    <div id="navigation" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        
+          
+            <li >
+              <a href="/docs/learn-es2015/">Learn ES2015</a>
+            </li>
+          
+        
+          
+            <li >
+              <a href="/docs/setup/">Setup</a>
+            </li>
+          
+        
+          
+            <li class="active">
+              <a href="/docs/plugins/">Plugins</a>
+            </li>
+          
+        
+          
+            <li class="dropdown ">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Usage <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                
+                  <li >
+                    <a href="/docs/usage/options/">Options</a>
+                  </li>
+                
+                  <li >
+                    <a href="/docs/usage/babelrc/">babelrc</a>
+                  </li>
+                
+                  <li >
+                    <a href="/docs/usage/cli/">CLI</a>
+                  </li>
+                
+                  <li >
+                    <a href="/docs/usage/require/">Require Hook</a>
+                  </li>
+                
+                  <li >
+                    <a href="/docs/usage/api/">API</a>
+                  </li>
+                
+                  <li >
+                    <a href="/docs/usage/polyfill/">Polyfill</a>
+                  </li>
+                
+                  <li >
+                    <a href="/docs/usage/browser/">Browser</a>
+                  </li>
+                
+              </ul>
+            </li>
+          
+        
+          
+            <li >
+              <a href="/repl/">Try it out</a>
+            </li>
+          
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="https://discuss.babeljs.io">Discuss</a>
+        </li>
+        <li>
+          <a href="https://slack.babeljs.io/">Chat</a>
+        </li>
+        <li>
+          <a href="https://phabricator.babeljs.io">Issues</a>
+        </li>
+        <li >
+          <a href="/blog/">Blog</a>
+        </li>
+        <li>
+          <a href="https://twitter.com/babeljs">Twitter</a>
+        </li>
+        <li>
+          <a href="https://github.com/babel/babel">GitHub</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <div class="docs-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Minify booleans transform</h1>
+        <p></p>
+        
+        <p class="package-links"><a href="https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-minify-booleans">GitHub</a>&nbsp; · &nbsp;<a href="https://www.npmjs.com/package/babel-plugin-transform-minify-booleans">npm</a></p>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-9 docs-content">
+      <p>Turn boolean literals into <code>!0</code> for <code>true</code> and <code>!1</code> for <code>false</code>.</p>
+
+<h2 id="example">Example</h2>
+
+<p><strong>In</strong></p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kc">true</span><span class="p">;</span>
+<span class="kc">false</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>Out</strong></p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="o">!</span><span class="mi">0</span><span class="p">;</span>
+<span class="o">!</span><span class="mi">1</span><span class="p">;</span>
+</code></pre></div>
+<h2 id="installation">Installation</h2>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="nv">$ </span>npm install babel-plugin-transform-minify-booleans
+</code></pre></div>
+<h2 id="usage">Usage</h2>
+
+<p>Add the following line to your <code>.babelrc</code>:</p>
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;plugins&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;transform-minify-booleans&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="sidebar">
+        <ul class="nav"></ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+    <div class="footer text-center">
+  <p><a href="https://github.com/babel/babel">Babel</a> · v6.x
+ · Distributed under MIT License</p>
+  <p><a href="https://github.com/babel/babel.github.io/tree/862b43db93e48762671267034a50c30c00e433e2">Looking for Babel 5.x docs?</a> · Found an issue with the docs? Report it <a href="https://github.com/babel/babel.github.io/issues/new">here</a>.</a></p>
+</div>
+
+
+  <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js' type="text/javascript"></script>
+
+  <script src='//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js' type="text/javascript"></script>
+
+  <script src='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js' type="text/javascript"></script>
+
+
+<script>$("html").removeClass("no-js").addClass("js");</script>
+
+
+
+
+
+
+  
+    <script src="/scripts/docs.js?t=2015-12-05T04:09:24+00:00"
+            type="text/javascript"></script>
+  
+
+
+
+
+  </body>
+
+</html>
